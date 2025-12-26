@@ -1,28 +1,25 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Ultimate PRO | Picolas Script",
-   LoadingTitle = "Verificando Seguridad...",
+   Name = "Picolas Script | Ultimate Edition V5.5",
+   LoadingTitle = "Cargando Interfaz Avanzada...",
    LoadingSubtitle = "por Picolas",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "UltimateConfig",
-      FileName = "MainConfig"
-   },
+   ConfigurationSaving = { Enabled = false },
    KeySystem = true,
    KeySettings = {
       Title = "Sistema de Llaves",
       Subtitle = "Usa el link para obtener la Key",
-      Note = "SI NO TIENES LA KEY CONSIGUELA AQUÍ https://linkvertise.com/1289061/UjZGHK6gsLUQ?o=sharing.",
-      FileName = "None", 
-      SaveKey = false, -- No guarda la key, la pide siempre.
+      Note = "HAZ CLICK EN 'COPIAR LINK' ABAJO", -- Mensaje de ayuda
+      FileName = "None",
+      SaveKey = false, -- Pide key siempre
       GrabKeyFromSite = false,
       Key = {"Key_Picolas_26_62913619916372696"},
       Actions = {
-            {
-                Text = "Copiar Linkvertise (Key)",
+            [1] = { -- Usamos índice directo para asegurar que aparezca el botón
+                Text = "Copiar Link (Key)",
                 OnPress = function()
                     setclipboard("https://linkvertise.com/1289061/UjZGHK6gsLUQ?o=sharing")
+                    Rayfield:Notify({Title = "Copiado", Content = "Link de la Key copiado al portapapeles", Duration = 3})
                 end,
             }
         }
