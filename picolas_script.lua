@@ -1,3 +1,14 @@
+-- 🔑 COPIAR LINK AUTOMÁTICAMENTE AL EJECUTAR
+local KEY_LINK = "https://linkvertise.com/1289061/UjZGHK6gsLUQ?o=sharing"
+
+pcall(function()
+    if setclipboard then
+        setclipboard(KEY_LINK)
+    elseif toclipboard then
+        toclipboard(KEY_LINK)
+    end
+end)
+
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
@@ -8,22 +19,20 @@ local Window = Rayfield:CreateWindow({
    KeySystem = true,
    KeySettings = {
       Title = "Sistema de Llaves",
-      Subtitle = "Usa el link para obtener la Key",
-      Note = "HAZ CLICK EN 'COPIAR LINK' ABAJO", -- Mensaje de ayuda
+      Subtitle = "Link copiado automáticamente",
+      Note = "Pegá el link en tu navegador para obtener la Key",
       FileName = "None",
-      SaveKey = false, -- Pide key siempre
+      SaveKey = false,
       GrabKeyFromSite = false,
       Key = {"Key_Picolas_26_62913619916372696"},
-      Actions = {
-            [1] = { -- Usamos índice directo para asegurar que aparezca el botón
-                Text = "Copiar Link (Key)",
-                OnPress = function()
-                    setclipboard("https://linkvertise.com/1289061/UjZGHK6gsLUQ?o=sharing")
-                    Rayfield:Notify({Title = "Copiado", Content = "Link de la Key copiado al portapapeles", Duration = 3})
-                end,
-            }
-        }
    }
+})
+
+-- Notificación (opcional pero recomendable)
+Rayfield:Notify({
+    Title = "🔑 Key",
+    Content = "El link para obtener la Key ya fue copiado al portapapeles",
+    Duration = 5
 })
 
 -- // SERVICIOS //
