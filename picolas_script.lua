@@ -58,6 +58,18 @@ local FullBrightEnabled = false
 local MM2FarmEnabled = false
 local SelectedPlayer = nil
 
+-- // TEAM CHECK //
+local function IsEnemy(player)
+	if player == LocalPlayer then return false end
+
+	-- Si el juego no usa teams, los toma como enemigos
+	if not LocalPlayer.Team or not player.Team then
+		return true
+	end
+
+	return player.Team ~= LocalPlayer.Team
+end
+
 -- // 1. LÓGICA DE ESP ROLES (MM2) //
 local function GetPlayerRole(player)
     if player.Backpack:FindFirstChild("Knife") or (player.Character and player.Character:FindFirstChild("Knife")) then
@@ -127,7 +139,11 @@ end
 local function GetClosest()
     local dist, target = math.huge, nil
     for _, p in pairs(Players:GetPlayers()) do
-        if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild(AimPart) then
+        if p ~= LocalPlayer
+	and IsEnemy(p)
+	and p.Character
+	and p.Character:FindFirstChild(AimPart)
+then
             local pos, vis = Camera:WorldToScreenPoint(p.Character[AimPart].Position)
             if vis then
                 local mDist = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(pos.X, pos.Y)).Magnitude
