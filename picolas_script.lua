@@ -1,5 +1,5 @@
 -- 🔑 COPIAR LINK AUTOMÁTICAMENTE AL EJECUTAR
-local KEY_LINK = "https://linkvertise.com/1289061/UjZGHK6gsLUQ?o=sharing"
+local KEY_LINK = "https://lootdest.org/s?GsgxWXuU"
 
 pcall(function()
     if setclipboard then
